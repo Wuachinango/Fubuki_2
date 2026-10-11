@@ -21,4 +21,6 @@ from FubukiApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('productos.html', views.productos, name='productos'),
+    path('registrarse.html', views.registrarse, name='registrarse')
 ]

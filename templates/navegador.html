@@ -1,0 +1,98 @@
+<!-- ========================= -->
+    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- ========================= -->
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+
+    <div class="container">
+
+        <!-- LOGO -->
+        <a class="navbar-brand fw-bold" href="index.html">
+            🎀 Tienda
+        </a>
+
+
+        <!-- BOTÓN PARA CELULAR -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menuPrincipal"
+        >
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- MENÚ -->
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="/">
+                        Inicio
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'productos' %}active{% endif %}" href="productos.html">
+                        Productos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="promociones.html">
+                        Promociones
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="pedidos.html">
+                        Pedidos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="agendar-pedido.html">
+                        Agendar pedido
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="resenas.html">
+                        Reseñas
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="iniciar_sesion.html">
+                        Iniciar Sesión
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="registrarse.html">
+                        Registrarse
+                    </a>
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link" href="carrito.html">
+
+                        <i class="bi bi-cart3"></i>
+                        Carrito
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
