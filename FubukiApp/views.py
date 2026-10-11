@@ -35,7 +35,7 @@ def registrarse(request):
             Cliente.objects.create(
                 nombre_usuario=nombre_usuario,
                 correo=correo,
-                contrasena=contrasena1 # (O idealmente cifrada, pero para tu estructura actual sirve)
+                contrasena=contrasena1 
             )
 
             #Inicio de sesión automatica
