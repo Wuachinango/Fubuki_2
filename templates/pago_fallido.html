@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0 p-4">
+                <div class="card-body">
+                    <div class="text-danger mb-3" style="font-size: 4rem;">
+                        &#10008;
+                    </div>
+                    <h2 class="card-title text-danger mb-3">El pago no pudo ser procesado</h2>
+                    <p class="card-text text-muted">
+                        Ocurrió un problema durante el proceso de pago o la transacción fue cancelada.
+                    </p>
+
+                    {% if error %}
+                    <div class="alert alert-danger mt-3" role="alert">
+                        <strong>Detalle del error:</strong> {{ error }}
+                    </div>
+                    {% elif response %}
+                    <div class="alert alert-warning mt-3" role="alert">
+                        <strong>Estado del pago:</strong> {{ response.status }}
+                    </div>
+                    {% endif %}
+
+                    <hr class="my-4">
+
+                    <p>No se ha realizado ningún cargo a tu cuenta. Puedes intentar realizar el pago nuevamente.</p>
+
+                    <div class="mt-4">
+                        <a href="{% url 'carrito' %}" class="btn btn-warning text-white btn-lg">Volver al Carrito</a>
+                        <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-lg ms-2">Ir al Inicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

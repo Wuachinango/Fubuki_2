@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5 text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0 p-4">
+                <div class="card-body">
+                    <div class="text-success mb-3" style="font-size: 4rem;">
+                        &#10004;
+                    </div>
+                    <h2 class="card-title text-success mb-3">¡Pago Exitoso!</h2>
+                    <p class="card-text text-muted">
+                        Tu transacción ha sido procesada correctamente. A continuación te mostramos el comprobante de tu compra:
+                    </p>
+                    
+                    <hr class="my-4">
+
+                    {% if response %}
+                    <div class="text-start bg-light p-3 rounded">
+                        <p><strong>Orden de Compra:</strong> {{ response.buy_order }}</p>
+                        <p><strong>Código de Autorización:</strong> {{ response.authorization_code }}</p>
+                        <p><strong>Monto Pagado:</strong> ${{ response.amount }}</p>
+                        <p><strong>Últimos dígitos de la tarjeta:</strong> **** **** **** {{ response.card_detail.card_number }}</p>
+                        <p><strong>Fecha / Hora:</strong> {{ response.transaction_date }}</p>
+                    </div>
+                    {% endif %}
+
+                    <div class="mt-4">
+                        <a href="{% url 'index' %}" class="btn btn-primary btn-lg">Volver al Inicio</a>
+                        <a href="{% url 'productos' %}" class="btn btn-outline-secondary btn-lg ms-2">Seguir Comprando</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

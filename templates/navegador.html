@@ -1,0 +1,107 @@
+{% load static %}
+<!-- ========================= -->
+    <!-- BARRA DE NAVEGACIÓN -->
+    <!-- ========================= -->
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+
+    <div class="container">
+
+        <!-- LOGO -->
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+        <img src="{% static 'img/icono-Fubuki.png' %}" alt="Logo" width="78" height="78" class="rounded-circle">
+            Fubuki
+        </a>
+
+
+        <!-- BOTÓN PARA CELULAR -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menuPrincipal"
+        >
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- MENÚ -->
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="/">
+                        Inicio
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'productos' %}active{% endif %}" href="/productos.html">
+                        Productos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'promociones' %}active{% endif %}" href="{% url 'promociones' %}">
+                        Promociones
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'buzon_pedidos_sugerencias' %}active{% endif %}" href="{% url 'buzon_pedidos_sugerencias' %}">
+                        Pedidos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'agendamiento_especial' %}active{% endif %}" href="{% url 'agendamiento_especial' %}">
+                        Agendar pedido
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'resenas' %}active{% endif %}" href="{% url 'resenas' %}">
+                        Reseñas
+                    </a>
+                </li>
+        
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a>
+                    </li>
+                {% else %}
+                    <li class="nav-link text-nowrap">
+                        <a class="nav-link" href="iniciar_sesion.html">
+                            Iniciar Sesión
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrarse.html">
+                            Registrarse
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+
+                    <a class="nav-link {% if request.resolver_match.url_name == 'carrito' %}active{% endif %}" href="{% url 'carrito' %}">
+
+                        <i class="bi bi-cart3"></i>
+                        Carrito{% with cantidad_carrito=request.session.carrito|default_if_none:'' %}{% if cantidad_carrito %}<span class="badge rounded-pill bg-primary">{{ cantidad_carrito|length }}</span>{% endif %}{% endwith %}
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
