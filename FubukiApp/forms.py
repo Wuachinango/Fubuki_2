@@ -1,7 +1,42 @@
 from django import forms
 
-from .models import MensajeBuzon, Resena, SolicitudEspecial
+from .models import MensajeBuzon, Resena, SolicitudEspecial, Producto
 
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['nombre','descripcion','precio','imagen','stock']
+        labels = {
+            'nombre': 'Nombre del Producto',
+            'descripcion': "Descripcion del Producto",
+            'precio': 'Precio del Producto',
+            'imagen': 'Imagen del Producto',
+            'stock': 'Stock del producto',
+        }
+        widgets = {
+            'nombre': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Nombre del producto',
+            }),
+            'descripcion': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Descripcion Producto',
+            }),
+            'precio':forms.NumberInput(attrs={
+                    'class': 'form-control',  # Para estilos Bootstrap
+                    'placeholder': 'Ingrese el precio',
+                    'step': '1',              # Solo enteros
+                    'min': '0'                # Evita negativos en el navegador
+                }),
+            'imagen': forms.ClearableFileInput(attrs={
+                'class': 'form-control',
+                'accept': 'img/*'
+            }),     
+            'stock': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'min': 0,
+            })
+        }
 
 class ResenaForm(forms.ModelForm):
     class Meta:

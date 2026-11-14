@@ -6,7 +6,7 @@ from django.db import IntegrityError
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.decorators.http import require_POST
-from .forms import MensajeBuzonForm, ResenaForm, SolicitudEspecialForm
+from .forms import MensajeBuzonForm, ResenaForm, SolicitudEspecialForm, ProductoForm
 from .models import Cliente, Resena, Producto, MensajeBuzon
 from django.views.decorators.csrf import csrf_exempt
 from transbank.common.integration_commerce_codes import IntegrationCommerceCodes
@@ -142,6 +142,20 @@ def detalle_producto(request, producto_id):
         'producto': producto,
         'tope_maximo': tope_maximo
     })
+    
+def agregar_producto(request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Producto agregado con exito.')
+            return redirect('productos')
+    else:
+        form = ProductoForm()
+        
+    return render(request, 'crear_producto.html', {
+            'form': form,
+        })
     
 def _imagen_producto(imagen_field):
     """Devuelve la URL del media si existe, o la imagen por defecto de estáticos."""

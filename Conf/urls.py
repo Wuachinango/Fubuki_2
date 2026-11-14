@@ -33,16 +33,13 @@ urlpatterns = [
     path('promociones.html', views.promociones, name='promociones'),
     path('resenas.html', views.resenas, name='resenas'),
     path('buzon-pedidos-sugerencias/', views.buzon_pedidos_sugerencias, name='buzon_pedidos_sugerencias'),
-    path(
-        'agendamiento-especial/',
-        views.agendamiento_especial,
-        name='agendamiento_especial',
-    ),
+    path('agendamiento-especial/', views.agendamiento_especial, name='agendamiento_especial'),
     path('registrarse.html', views.registrarse, name='registrarse'),
     path('iniciar_sesion.html', views.iniciar_sesion, name='iniciar_sesion'),
     path('cerrar_sesion/', views.cerrar_sesion, name='cerrar_sesion'),
     #Productos
     path('producto/<int:producto_id>/', views.detalle_producto, name='detalle_producto'),
+    path('crear_producto.html/', views.agregar_producto, name='crear_producto'),
     #Carrito
     path('carrito.html', views.carrito, name='carrito'),
     path('carrito/agregar/<int:producto_id>/', views.agregar_carrito, name='agregar_carrito'),
