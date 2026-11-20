@@ -30,7 +30,11 @@
                                     </div>
                                 {% endfor %}
                                 {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
-                                <button type="submit" class="btn btn-primary w-100">Enviar solicitud</button>
+                                {% if user.is_authenticated %}
+                                    <button type="submit" class="btn btn-primary w-100">Enviar solicitud</button>
+                                {% else %}
+                                    <span class="badge text-bg-danger w-100">Enviar solicitud</span>
+                                {% endif %}
                             </form>
                         </div>
                     </div>
